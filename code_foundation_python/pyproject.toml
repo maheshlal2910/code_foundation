@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "code-foundation"
+version = "0.0.1"
+description = "This is a python solution for the Elementary Clean Code Foundation program."
+authors = ["Mahesh Lal <mahesh.2910@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "code_foundation"}]
+keywords = ["clean-code", "foundation", "python", "best-practices"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Education",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+
+[tool.poetry.group.dev.dependencies]
+# Testing
+pytest = "^7.0.0"
+pytest-cov = "^4.0.0"
+
+# Linting and formatting
+flake8 = "^6.0.0"
+black = "^23.0.0"
+isort = "^5.12.0"
+
+# Type checking
+mypy = "^1.0.0"
+types-setuptools = "*"
+
+# Documentation
+sphinx = "^6.0.0"
+
+# Development
+pre-commit = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
