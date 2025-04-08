@@ -17,3 +17,11 @@ class Line:
 
 def parallel_lines(line1: Line, line2: Line) -> bool:
     return math.isclose(line1.slope(), line2.slope())
+
+def perpendicular_lines(line1: Line, line2: Line) -> bool:
+    if abs(line1.slope()) == float('inf') and line2.slope() == 0:  # line1 is vertical, line2 is horizontal
+        return True
+    if abs(line2.slope()) == float('inf') and line1.slope() == 0:  # line2 is vertical, line1 is horizontal
+        return True
+    if abs(line1.slope()) != float('inf') and abs(line2.slope()) != float('inf'):
+        return math.isclose(line1.slope() * line2.slope(), -1)
