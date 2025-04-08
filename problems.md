@@ -15,4 +15,5 @@ Write a program to take a number from the command line.
 
 ### Problem 2: Understanding Single Responsibility Principle
 
-Define a line, and find the length of the line.
+* Define a line, and find the length of the line
+* Find out if the line is parallel to another line
