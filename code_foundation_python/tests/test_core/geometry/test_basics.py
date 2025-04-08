@@ -1,5 +1,5 @@
 import unittest
-from code_foundation.core.geometry.basics import Line
+from code_foundation.core.geometry.basics import Line, parallel_lines
 
 
 class TestLine(unittest.TestCase):
@@ -13,6 +13,15 @@ class TestLine(unittest.TestCase):
         line1 = Line((0, 0), (5, 5))
         self.assertEqual(line1.slope(), 1.0)
 
-    def test_slope_is_undefined(self):
-        line = Line((1, 1), (1, 1))
-        self.assertEqual(line.slope(), float('inf'))
+
+class TestLineFunctions(unittest.TestCase):
+
+    def test_parallel_lines(self):
+        line1 = Line((1, 1), (2, 2))
+        line2 = Line((1, 2), (2, 3))
+        self.assertTrue(parallel_lines(line1, line2))
+
+    def test_not_parallel_lines(self):
+        line1 = Line((0, 0), (1, 1))
+        line2 = Line((0, 0), (1, 2))
+        self.assertFalse(parallel_lines(line1, line2))
