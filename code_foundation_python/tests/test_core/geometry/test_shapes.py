@@ -63,7 +63,21 @@ class TestRectangleValidation(unittest.TestCase):
         except Exception as e:
             self.fail(f"Valid rectangle creation failed: {e}")
     
-    def test_rectangle_with_invalid_side_lengths(self):
+    def test_rectangle_perimeter(self):
+        """Test that the parameter() method calculates the perimeter correctly."""
+        rect = Rectangle(
+            Point(0, 0),
+            Point(0, 4),
+            Point(6, 4),
+            Point(6, 0)
+        )
+        self.assertEqual(
+            rect.perimeter(),
+            20,
+            "The calculated perimeter of the rectangle is incorrect."
+        )
+    
+    def test_unequal_opposite_side_lengths_raise_an_error(self):
         """Test that a rectangle with unequal opposite sides raises an error."""
         with self.assertRaises(ValueError):
             Rectangle(
@@ -73,7 +87,7 @@ class TestRectangleValidation(unittest.TestCase):
                 Point(3, 0)
             )
     
-    def test_rectangle_with_non_right_angles(self):
+    def test_non_right_angles_raises_an_error(self):
         """Test that a rectangle with angles that are not right angles raises an error."""
         with self.assertRaises(ValueError):
             Rectangle(
@@ -82,3 +96,5 @@ class TestRectangleValidation(unittest.TestCase):
                 Point(2, 3),  # Non-perpendicular angle
                 Point(3, 0)
             )
+    
+    
