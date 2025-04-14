@@ -15,4 +15,10 @@ class TestQuadrilateral(unittest.TestCase):
             Quadrilateral(Point(0, 0), Point(1, 1), Point(2, 2), Point(3, 3))
         except Exception as e:
             self.fail(f"Quadrilateral creation failed with distinct vertices: {e}")
+
+    def test_quadrilateral_perimeter(self):
+        quad = Quadrilateral(Point(0, 0), Point(0, 1), Point(1, 1), Point(1, 0))
+        perimeter = quad.perimeter()
+        self.assertEqual(perimeter, 4, "Perimeter calculation is incorrect")
+    
     
