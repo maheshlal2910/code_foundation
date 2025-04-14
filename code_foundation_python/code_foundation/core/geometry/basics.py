@@ -1,38 +1,20 @@
 import math
 
-
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-    
-    def __eq__(self, other):
-        if isinstance(other, Point):
-            return math.isclose(self.x, other.x) and math.isclose(self.y, other.y)
-        return False
-    
-    def __hash__(self):
-        return hash((round(self.x, 10), round(self.y, 10)))
+from code_foundation.core.geometry.point import Point, distance_between
 
 
 class Line:
-    def __init__(self, beginning: tuple, end: tuple):
-        self.x1, self.y1 = beginning
-        self.x2, self.y2 = end
+    def __init__(self, beginning: Point, end: Point):
+        self.beginning = beginning
+        self.end = end
     
     def length(self):
-        return ((self.x2 - self.x1) ** 2 + (self.y2 - self.y1) ** 2) ** 0.5
+        return distance_between(self.beginning, self.end)
     
     def slope(self):
-        if self.x2 - self.x1 == 0:
+        if self.end.x - self.beginning.x == 0:
             return float('inf')
-        return (self.y2 - self.y1) / (self.x2 - self.x1)
-
-
-def distance_between(point1: Point, point2: Point) -> float:
-    if point1 == point2:
-        return 0
-    return ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5
+        return (self.end.y - self.beginning.y) / (self.end.x - self.beginning.x)
 
 
 def parallel_lines(line1: Line, line2: Line) -> bool:
