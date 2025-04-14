@@ -29,6 +29,12 @@ class Line:
         return (self.y2 - self.y1) / (self.x2 - self.x1)
 
 
+def distance_between(point1: Point, point2: Point) -> float:
+    if point1 == point2:
+        return 0
+    return ((point2.x - point1.x) ** 2 + (point2.y - point1.y) ** 2) ** 0.5
+
+
 def parallel_lines(line1: Line, line2: Line) -> bool:
     return math.isclose(line1.slope(), line2.slope())
 
