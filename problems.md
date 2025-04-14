@@ -19,3 +19,8 @@ Write a program to take a number from the command line.
 * Find out if the line is parallel to another line
 * Find our if the lines are perpendicular to eaach other
 * Find out if lines intersect
+
+### Problem 3: Open / Closed Principle
+* Define a quadrilateral and find the perimeter
+* Define a Rectangle
+* Define a Square
