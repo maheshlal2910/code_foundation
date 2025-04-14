@@ -1,6 +1,32 @@
 import unittest
 
-from code_foundation.core.geometry.basics import Line, parallel_lines, perpendicular_lines, intersects
+from code_foundation.core.geometry.basics import Point, Line, parallel_lines, perpendicular_lines, intersects
+
+
+class TestPoint(unittest.TestCase):
+    def test_points_with_same_cooridinates_are_equal(self):
+        point1 = Point(1, 2)
+        point2 = Point(1, 2)
+        self.assertEqual(point1, point2)
+    
+    def test_points_with_different_cooridinates_are_not_equal(self):
+        point1 = Point(1, 2)
+        point3 = Point(2, 3)
+        self.assertNotEqual(point1, point3)
+    
+    def test_points_with_same_cooridinates_but_different_types_are_equal(self):
+        point1 = Point(1, 2)
+        point4 = Point(1, 2.0)
+        self.assertEqual(point1, point4)
+    
+    def test_point_and_non_point_are_not_equal(self):
+        point1 = Point(1, 2)
+        not_a_point = (1, 2)
+        self.assertNotEqual(point1, not_a_point)
+    
+    def test_point_and_none_are_not_equal(self):
+        point1 = Point(1, 2)
+        self.assertNotEqual(point1, None)
 
 
 class TestLine(unittest.TestCase):
