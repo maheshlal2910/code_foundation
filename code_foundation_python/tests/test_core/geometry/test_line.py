@@ -2,7 +2,7 @@ import unittest
 
 
 from code_foundation.core.geometry.point import Point
-from code_foundation.core.geometry.basics import Line, parallel_lines, perpendicular_lines, \
+from code_foundation.core.geometry.line import Line, parallel_lines, perpendicular_lines, \
     intersects
 
 
