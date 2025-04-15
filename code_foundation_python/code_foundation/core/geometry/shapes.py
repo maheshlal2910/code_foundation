@@ -1,3 +1,6 @@
+import math
+
+from code_foundation.core.geometry.line import Line, perpendicular_lines
 from code_foundation.core.geometry.point import Point, distance_between
 
 
@@ -13,12 +16,6 @@ class Quadrilateral:
             distance_between(self.vertices[i], self.vertices[(i + 1) % 4])
             for i in range(4)
         )
-
-
-from code_foundation.core.geometry.point import Point
-from code_foundation.core.geometry.line import Line, perpendicular_lines
-from code_foundation.core.geometry.shapes import Quadrilateral
-import math
 
 
 class Rectangle(Quadrilateral):
@@ -43,3 +40,12 @@ class Rectangle(Quadrilateral):
         for i in range(4):
             if not perpendicular_lines(self.sides[i], self.sides[(i + 1) % 4]):
                 raise ValueError("All adjacent sides must form right angles.")
+
+
+class Square(Rectangle):
+    def __init__(self, v1: Point, v2: Point, v3: Point, v4: Point):
+        super().__init__(v1, v2, v3, v4)
+        
+        # Ensure all sides are of equal length
+        if not all(math.isclose(self.sides[0].length(), side.length()) for side in self.sides):
+            raise ValueError("All sides of a square must have equal length.")
